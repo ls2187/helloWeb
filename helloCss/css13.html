@@ -6,25 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        *{
-            /* box-sizing: border-box; */ 
+        html{
+            border:1px solid grey;
         }
         div{
+            border:5px solid tomato;
             margin:10px;
-            width:150px;
         }
-        #small{
-            border: 10px solid black;
-        }
-        #large{
-                border: 30px solid black;
-                background-color:yellow;
-                position:relative;
+        #me{
+            position: relative;
+            left:100px;
+            top:100px;
         }
     </style>
 </head>
 <body>
-    <div id="small">hello</div>
-    <div id="large">hello</div>
+    <div id="other">other</div>
+    <div id="parent">parent
+        <div id="me">me</div>
+    </div>
 </body>
 </html>
