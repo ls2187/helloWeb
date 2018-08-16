@@ -8,11 +8,18 @@
     <style>
         a{
             font-size:3rem;
-            display:inline-block
+            display:inline-block;
+            /* transition-property: all;
+            transition-duration: 0.7s; 
+            transition: all 0.1s
+            */
+            transition: font-size 1s, transform 0.1s;
+            transition-delay: 0.2s;
         }
         a:active{
             transform:translate(20px, 20px);
             /* transform 태그는 블록태그나 인라인 태그 레벨에서 동작한다. */
+            font-size:2rem;
         }
     </style>
 </head>
