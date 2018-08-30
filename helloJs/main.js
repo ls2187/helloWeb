@@ -86,12 +86,14 @@ function todolist(list, liText){
     var checkBox = document.createElement('input');
     checkBox.type = 'checkbox';
     checkBox.id = 'cb_' + totalItems;
-    checkBox.onclick = updateItemStatus; //click하면 updateItemStatus 함수를 불러온다.
+    var abcd = document.getElementById('cb_'+totalItems);
+    
+    checkBox.onclick = updateItemStatus //click하면 updateItemStatus 함수를 불러온다.
 
     var span = document.createElement('span');
     span.id = 'item_' + totalItems;
     span.innerText = liText;
-    // span.onclick = renameItem; 
+    // span.onclick = renameItem;
     
     var pencilIcon = document.createElement('i');
     pencilIcon.id = 'pencilIcon_' + totalItems;
