@@ -21,7 +21,6 @@ inputText.onkeyup = function(event){
 
 //버튼 클릭시 이벤트 발생
 btnAdd.onclick = function(){
-
     var liText =  inputText.value;
     if(!liText || liText === " " || !liText ==="")
         return false;
@@ -66,7 +65,6 @@ function moveItem(){
     }else{
        donelist.appendChild(listItem);
     }
-    
 }
 
 function removeItem(){
@@ -86,10 +84,12 @@ function todolist(list, liText){
     var checkBox = document.createElement('input');
     checkBox.type = 'checkbox';
     checkBox.id = 'cb_' + totalItems;
-    var abcd = document.getElementById('cb_'+totalItems);
-    
-    checkBox.onclick = updateItemStatus //click하면 updateItemStatus 함수를 불러온다.
 
+    // checkBox.onclick = updateItemStatus에 '()'를 안쓰는 이유
+    // '()'를 쓰면 함수를 참조하는 것으로, this가 상위 window 객체를 가르키게 되어 오류가 발생한다.
+    // '()' 쓰지 않고 아래와 같이 입력하면 참조가 아닌, 복사가 되는 것으로 == 의 느낌이 된다.
+    checkBox.onclick = updateItemStatus //click하면 updateItemStatus 함수를 불러온다.
+    
     var span = document.createElement('span');
     span.id = 'item_' + totalItems;
     span.innerText = liText;

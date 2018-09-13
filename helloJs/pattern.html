@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 정규 표현식은 정보를 추출할 때 사용하는 것으로 
+        // 긴 문자열과 같은 것에서 문자를 추출, 
+        // 정보를 확인, 치환하는 것에 쓰인다.
+        
+
+        var pattern = /a/;
+        // 컴퓨터에게 a를 찾는다고 알려줌
+        // 객체 생성자로 컴퓨터에게 알려줌(기능은 서로 같다.)
+        //   -> var pattern = new regExp('a');
+        console.log(pattern.exec('abcdef'));// 원하는 정보를 찾는 것(추출)
+        // result: ["a"]  -> 배열로 return한다.
+        
+        var pattern = /a./; //'.'은 하나의 문자라는 뜻
+        console.log(pattern.exec('abcdef'));
+        //result: ["ab"]
+
+        var pattern = /a/;
+        console.log(pattern.exec('bcdef'));
+        //result: null;
+        
+        console.log(pattern.test('abcdef'));//정보가 있는지 없는지 확인하는 것
+        //result: true;
+
+        console.log(pattern.test('bcdef'));
+        //result: false
+
+        var str="abcdef";
+
+        str.match(pattern);
+        //result:["a"]
+        
+        var str="bcdef";
+        str.match(pattern);
+        //result:null;
+        str.replace(pattern, 'A');
+        //result:"Abcdef"
+
+
+        var xi = /a/;
+        "Abcde".match(xi);
+        //result:null;
+        
+        var oi = /a/i; // i를 붙이면 대소문자를 구분하지 않는다.
+        "Abcde".match(oi);
+        //result:["A"]
+        
+        var xg = /a/;
+
+        "abcdea".match(xg);
+        //result: ["a"]
+        
+        var og = /a/g; // a의 모든 문자를 찾는다.
+        "abcdea".match(og); 
+        //result: ["a","a"]
+        
+        var ig = /a/ig; //같이 사용 가능
+        "AabcdaA".match(ig);
+        //result: ["A","a","a","A"]
+
+        //(\w+)\s(\w+) '()'-> 그룹을 의미, '\w'->문자들을 의미, '+'는 하나 이상을 의미
+        // '\s'는 스페이스(공백)을 의미
+        var pattern = /(\w+)\s(\w+)/
+        var str = "coding everybody"; 
+        var result = str.replace(pattern, "$2, $1"); //$2는 2번째(everybody), $1은 1번쨰(coding)
+                                                    //', '는 ', '를 의미
+        //result: everybody, coding
+    
+        var urlPattern = /\b(?:https?):\/\/[a-z0-9-+&@#\/%?=~_|!:,.;]*/gim; // 정규표현식 패턴
+        var content = '생활코딩 : http://opentutorials.org/course/1 입니다. 네이버 : http://naver.com 입니다. ';
+        var result = content.replace(urlPattern, function(url){
+            return '<a href="'+url+'">'+url+'</a>';
+        });
+        console.log(result);
+
+    </script>
+</body>
+</html>

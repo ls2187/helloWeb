@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Rectangle(w, h){
+            var width=w;
+            var height=h;
+            
+            this.setWidth=function(w){
+                if(w<0){
+                    throw '길이는 음수가 될 수 없다.'
+                }else{
+                    width = w;
+                }
+            };
+
+            this.setHeight=function(h){
+                if(h<0){
+                    throw '길이는 음수가 될 수 없다.';
+                }    
+                else{
+                    height = h;
+                }
+            };
+
+            this.getWidth = function(){return width;};
+            this.getHeight = function(){return height;};
+        }
+
+        Rectangle.prototype.getArea = function(){
+            return this.getWidth() * this.getHeight();
+        };
+        
+        var rectangle = new Rectangle(3, 7);
+        
+
+        function Square(length){
+            this.base = Rectangle;
+            this.base(length, length);
+            
+        }
+        Square.prototype = Rectangle.prototype;
+        Square.prototype.constructor = Square; // 함수 재정의
+        var square = new Square(5);
+
+        alert(rectangle.getArea() + ' : ' + square.getArea());
+        alert(square instanceof Rectangle);
+
+        var abcdef=233;
+        var numa = new Number(283);
+
+    </script>
+</body>
+</html>
